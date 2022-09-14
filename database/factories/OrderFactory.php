@@ -17,7 +17,10 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "user_id" => 1,
+            "total_price" => 0,
+            "delivery_address" => $this->faker->streetAddress(),
+            "status" => "cart",
         ];
     }
 }

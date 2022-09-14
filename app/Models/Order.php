@@ -12,7 +12,7 @@ class Order extends Model
     protected $guarded = [];
 
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
     public function user() {
