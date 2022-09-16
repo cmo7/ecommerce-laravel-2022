@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/products', function() {
+    return Product::all();
+});
 
 require __DIR__.'/auth.php';
