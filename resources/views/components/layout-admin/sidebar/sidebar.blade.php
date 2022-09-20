@@ -16,22 +16,22 @@
                 'icon' => 'bi bi-plus-square',
                 'url' => route('create-product'),
             ],
+            'Tienda' => [
+                'text' => 'Tienda',
+                'icon' => 'bi bi-shop',
+                'url' => route('store'),
+            ],
         ];
     @endphp
     <ul class="nav nav-pills flex-column mb-auto">
         @foreach ($menu_elements as $element)
-
             @php
                 $text = $element['text'];
                 $url = $element['url'];
                 $icon = $element['icon'];
             @endphp
 
-            <x-layout-admin.sidebar.menu-element
-                :text="$text"
-                :url="$url"
-                :icon="$icon" />
-
+            <x-layout-admin.sidebar.menu-element :text="$text" :url="$url" :icon="$icon" />
         @endforeach
 
     </ul>

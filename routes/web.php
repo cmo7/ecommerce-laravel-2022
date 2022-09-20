@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('front-page', [
+    return view('public.front-page', [
         'products' => Product::all(),
     ]);
-});
+})->name('store');
 
 Route::get('/admin', function() {
     return view('admin.front-page');
