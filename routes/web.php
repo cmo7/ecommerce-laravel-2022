@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
