@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -23,8 +25,19 @@ class ProductController extends Controller
             "picture" => "required|image",
             "price" => "required|numeric|min:0",
             "stock" => "required|numeric|min:0",
-            "category_id" => "required|exists:category,id",
+            "category_id" => "required|exists:categories,id",
         ]);
-        return redirect('/');
+
+        $picture = $request->file('picture');
+
+        $picture_file_name = time() . $picture->getClientOriginalName();
+        $picture->move(public_path('images'), $picture_file_name);
+
+        $validated["picture"] = "/images/" . $picture_file_name;
+        $validated["slug"] = Str::slug($validated["name"] . time());
+
+        Product::create($validated);
+
+        return redirect(route('admin-page'));
     }
 }

@@ -22,8 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function() {
-    return view('admin-page');
-});
+    return view('admin.front-page');
+})->name('admin-page');
 
 // Product admin Routes
 Route::get('/admin/new-product', [ProductController::class, 'new_form'])->name('new-product-form');
