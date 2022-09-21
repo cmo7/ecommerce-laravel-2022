@@ -29,6 +29,9 @@ Route::get('/admin', function() {
 Route::get('/admin/new-product', [ProductController::class, 'new_form'])->name('new-product-form');
 Route::post('/admin/new-product', [ProductController::class, 'create'])->name('create-product');
 
+// Product public Routes
+Route::get('/product/{slug}',[ProductController::class, 'show'])->name('show-product');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

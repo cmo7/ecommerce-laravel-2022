@@ -36,8 +36,25 @@ class ProductController extends Controller
         $validated["picture"] = "/images/" . $picture_file_name;
         $validated["slug"] = Str::slug($validated["name"] . time());
 
-        Product::create($validated);
+        $product = Product::create($validated);
+
+        $tags = $request->input('tags');
+
+        $product->tags()->attach($tags);
 
         return redirect(route('admin-page'));
+    }
+    public function show($slug) {
+        $product = Product::where('slug', $slug)->get()->firstOrFail();
+        $related_products = $product
+            ->category
+            ->products
+            ->where('id', '!=', $product->id)
+            ->shuffle()
+            ->take(3);
+        return view('public.single-product', [
+            "product" => $product,
+            "related_products" => $related_products,
+        ]);
     }
 }
