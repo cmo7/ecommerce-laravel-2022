@@ -14,7 +14,17 @@
             'Crear Producto' => [
                 'text' => 'Crear Producto',
                 'icon' => 'bi bi-plus-square',
-                'url' => route('create-product'),
+                'url' => route('new-product-form'),
+            ],
+            'Crear Categoría' => [
+                'text' => 'Crear Categoría',
+                'icon' => 'bi bi-union',
+                'url' => route('new-category-form'),
+            ],
+            'Crear Etiqueta' => [
+                'text' => 'Crear Etiqueta',
+                'icon' => 'bi bi-tags',
+                'url' => route('new-tag-form'),
             ],
             'Tienda' => [
                 'text' => 'Tienda',

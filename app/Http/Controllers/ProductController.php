@@ -57,4 +57,10 @@ class ProductController extends Controller
             "related_products" => $related_products,
         ]);
     }
+
+    public function list(Request $request) {
+        return view('admin.product-list', [
+            "products" => Product::all(),
+        ]);
+    }
 }
