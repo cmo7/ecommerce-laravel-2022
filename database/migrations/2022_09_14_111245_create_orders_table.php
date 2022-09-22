@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->float('total_price', 11, 2, true);
-            $table->string('delivery_address');
+            $table->string('delivery_address')->nullable();
             $table->string('status');
             $table->string('traking_number')->nullable();
             $table->timestamps();

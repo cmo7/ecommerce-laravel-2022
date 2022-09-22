@@ -1,5 +1,5 @@
 <x-layout>
-    <x-layout-public>
+    <x-layout-public :cart="$cart" >
         <!-- Hero -->
         <section id="hero" class="container-fluid">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">

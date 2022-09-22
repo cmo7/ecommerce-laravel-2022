@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -17,11 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('public.front-page', [
-        'products' => Product::all(),
-    ]);
-})->name('store');
+Route::get('/', [StoreController::class, 'front_page'])->name('store');
+Route::get('/checkout', [StoreController::class, 'checkout_page'])->name('checkout');
 
 Route::get('/admin', function() {
     return view('admin.front-page');
@@ -45,9 +43,10 @@ Route::get('/admin/tags', [TagController::class, 'list'])->name('list-tags');
 
 // Product public Routes
 Route::get('/product/{slug}',[ProductController::class, 'show'])->name('show-product');
+Route::post('/product/add/{id}', [ProductController::class, 'add_to_cart'])->name('product-add-to-cart');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect(route('store'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/products', function() {
