@@ -1,9 +1,7 @@
-@props(['cart'])
-
 <x-layout-public.header />
 
-@if ($cart != null)
-    <x-layout-public.cart :cart="$cart" />
+@if (get_cart() != null)
+    <x-layout-public.cart />
 @endif
 
 <div class="container mt-4">

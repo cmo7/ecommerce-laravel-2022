@@ -2,7 +2,7 @@
 
 use App\Models\Order;
 
-function get_cart ($user) {
+function get_cart () {
     $user = auth()->user();
 
         if ($user != null) {

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-layout-public :cart="$cart">
+    <x-layout-public>
         <a href="#" class="text-decoration-none"> <h3 class="text-muted text-start">{{$product->category->name}}</h3> </a>
         <div class="row mx-1">
             <div class="col-12 col-md-4 mb-3">

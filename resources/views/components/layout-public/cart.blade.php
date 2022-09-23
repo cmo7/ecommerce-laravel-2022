@@ -1,4 +1,6 @@
-@props(['cart'])
+@php
+    $cart = get_cart();
+@endphp
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">

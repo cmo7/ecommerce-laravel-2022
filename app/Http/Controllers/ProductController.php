@@ -49,24 +49,6 @@ class ProductController extends Controller
     }
     public function show($slug)
     {
-        $user = auth()->user();
-
-        if ($user != null) {
-            $cart = $user->orders
-                ->sortByDesc('created_at')
-                ->firstWhere('status', 'cart');
-
-            if ($cart == null) {
-                $cart = Order::create([
-                    "user_id" => $user->id,
-                    "total_price" => 0,
-                    "status" => "cart",
-                ]);
-            }
-        } else {
-            $cart = null;
-        }
-
         $product = Product::where('slug', $slug)->get()->firstOrFail();
         $related_products = $product
             ->category
@@ -77,7 +59,6 @@ class ProductController extends Controller
         return view('public.single-product', [
             "product" => $product,
             "related_products" => $related_products,
-            "cart" => $cart,
         ]);
     }
 
@@ -90,23 +71,7 @@ class ProductController extends Controller
 
     public function add_to_cart($id)
     {
-        $user = auth()->user();
-
-        if ($user != null) {
-            $cart = $user->orders
-                ->sortByDesc('created_at')
-                ->firstWhere('status', 'cart');
-
-            if ($cart == null) {
-                $cart = Order::create([
-                    "user_id" => $user->id,
-                    "total_price" => 0,
-                    "status" => "cart",
-                ]);
-            }
-        } else {
-            $cart = null;
-        }
+        $cart = get_cart();
 
         $cart->products()->attach($id, ["units" => 1]);
 
