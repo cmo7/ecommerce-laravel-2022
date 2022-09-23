@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StoreController::class, 'front_page'])->name('store');
 Route::get('/checkout', [StoreController::class, 'checkout_page'])->name('checkout');
+Route::post('/checkout', [OrderController::class, 'cart_to_processing'])->name('process-checkout');
 
 Route::get('/admin', function() {
     return view('admin.front-page');
@@ -34,6 +36,10 @@ Route::post('/admin/new-category', [CategoryController::class, 'create'])->name(
 
 Route::get('/admin/new-tag', [TagController::class, 'new_form'])->name('new-tag-form');
 Route::post('/admin/new-tag', [TagController::class, 'create'])->name('create-tag');
+
+Route::get('/admin/orders', [OrderController::class, 'list'])->name('list-orders');
+Route::post('/admin/orders/send', [OrderController::class, 'processing_to_sent'])->name('send-order');
+
 
 // View Products/Categories/Tags
 Route::get('/admin/products', [ProductController::class, 'list'])->name('list-products');
