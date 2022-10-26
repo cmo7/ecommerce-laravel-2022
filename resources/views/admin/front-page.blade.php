@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <div class="card-title">Hola</div>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos earum ipsam perspiciatis dicta odio dolorem! Ducimus, consequuntur eius ullam quibusdam eaque quos mollitia aliquam officiis, veniam odit dolorum facere? Doloremque?
                         </div>
                     </div>
                 </div>
